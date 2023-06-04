@@ -2,7 +2,6 @@ package dtos;
 
 public class TripDTO {
 
-    private Long id;
     private String name;
     private String date;
     private Integer time;

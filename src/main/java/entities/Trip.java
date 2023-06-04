@@ -1,8 +1,6 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Trip {
@@ -27,6 +25,18 @@ public class Trip {
 
     @Column(name = "packing_list")
     private String packingList;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "guide_id")
+    private Guide guide;
+
+    public Guide getGuide() {
+        return guide;
+    }
+
+    public void setGuide(Guide guide) {
+        this.guide = guide;
+    }
 
     public Trip() {
     }
