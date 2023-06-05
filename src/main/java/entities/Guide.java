@@ -4,9 +4,11 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "guide")
 public class Guide {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -28,6 +30,14 @@ public class Guide {
     private Set<Trip> trips;
 
     public Guide() {
+    }
+
+    public Guide(String name, String gender, Integer birthYear, String profile, String image_url) {
+        this.name = name;
+        this.gender = gender;
+        this.birthYear = birthYear;
+        this.profile = profile;
+        this.image_url = image_url;
     }
 
     public String getImage_url() {

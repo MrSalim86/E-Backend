@@ -86,9 +86,15 @@ public class UserFacade {
         return UserDTO.getDtos(persons);
     }
 
-
-
-
-
-
+    public UserDTO createUser(UserDTO user) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(user);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return user;
+    }
 }

@@ -72,6 +72,11 @@ public class UserDTO {
         this.userName = user.getUserName();
         this.userPass = user.getUserPass();
         this.roleList = user.getRoleList().stream().map(r -> new RoleDTO(r)).collect(Collectors.toList());
+        this.address = user.getAddress();
+        this.birth_year = user.getBirth_year();
+        this.email = user.getEmail();
+        this.gender = user.getGender();
+        this.phone = user.getPhone();
 
     }
 

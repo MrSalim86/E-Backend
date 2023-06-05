@@ -31,6 +31,9 @@ public class User implements Serializable {
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
 
+  @ManyToMany
+  private List<Trip> trips = new ArrayList<>();
+
   @Column(name = "address")
   private String address;
 
@@ -48,7 +51,12 @@ public class User implements Serializable {
 
 
 
-  public User(String address, String phone, String email, Integer birth_year, String gender) {
+
+  public User(String userName, String userPass, List<Role> roleList, List<Trip> trips, String address, String phone, String email, Integer birth_year, String gender) {
+    this.userName = userName;
+    this.userPass = userPass;
+    this.roleList = roleList;
+    this.trips = trips;
     this.address = address;
     this.phone = phone;
     this.email = email;

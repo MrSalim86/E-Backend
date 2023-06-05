@@ -1,5 +1,10 @@
 package dtos;
 
+import entities.Trip;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class TripDTO {
 
     private String name;
@@ -8,6 +13,7 @@ public class TripDTO {
     private String location;
     private String duration;
     private String packing_list;
+
 
     public TripDTO() {
     }
@@ -20,6 +26,10 @@ public class TripDTO {
         this.duration = duration;
         this.packing_list = packing_list;
     }
+
+    public TripDTO(List<Trip> trips) {
+    }
+
 
     public String getName() {
         return name;

@@ -3,8 +3,10 @@ package entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "trip")
 public class Trip {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trip_id", nullable = false)
     private Long id;
 
@@ -29,6 +31,17 @@ public class Trip {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guide_id")
     private Guide guide;
+
+    public Trip(String name, String date, Integer time, String location, String duration, String packingList, Guide guide) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        this.duration = duration;
+        this.packingList = packingList;
+        this.guide = guide;
+    }
+
 
     public Guide getGuide() {
         return guide;
