@@ -42,6 +42,9 @@ public class Trip {
         this.guide = guide;
     }
 
+    public Trip(String name, String date, Integer time, String location, String duration, String packing_list) {
+    }
+
 
     public Guide getGuide() {
         return guide;
@@ -108,5 +111,8 @@ public class Trip {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setUsers(User user) {
     }
 }

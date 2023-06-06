@@ -1,7 +1,9 @@
 package facades;
 
 import dtos.TripDTO;
+import entities.Guide;
 import entities.Trip;
+import entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -56,11 +58,50 @@ public class TripFacade {
     }
 
 
-    public void createTrip(Trip trip) {
+    public void createTrip(TripDTO tripDTO) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
+            Trip trip = new Trip(tripDTO.getName(), tripDTO.getDate(), tripDTO.getTime(), tripDTO.getLocation(), tripDTO.getDuration(), tripDTO.getPacking_list());
             em.persist(trip);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void setGuideToTrip(Trip trip, Guide guide) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Trip tripEntity = em.find(Trip.class, trip.getId());
+            tripEntity.setGuide(guide);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+    }
+
+    public void chooseTrip(Trip trip, User user) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Trip tripEntity = em.find(Trip.class, trip.getId());
+            tripEntity.setUsers(user);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+    }
+
+
+    public void deleteTrip(Trip trip) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(trip);
             em.getTransaction().commit();
         } finally {
             em.close();

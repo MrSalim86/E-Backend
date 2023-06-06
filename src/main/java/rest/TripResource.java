@@ -9,9 +9,7 @@ import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;
 import javax.print.attribute.standard.Media;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.List;
 
@@ -38,6 +36,7 @@ public class TripResource {
         return GSON.toJson(trips);
 
     }
+
 
 
 }

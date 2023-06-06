@@ -33,8 +33,7 @@ public class Populator {
         Trip trip2 = new Trip("London", "22-12-2020", 22, "big appel", "kbh", "22", new Guide("kim", "mail", 1988, "linkind", "1234"));
 
         TripFacade tf = TripFacade.getTripFacade(EMF_Creator.createEntityManagerFactory());
-        tf.createTrip(trip);
-        tf.createTrip(trip2);
+
 
         /*User user = new User("GoMo", "Go1234");
         UserFacade uf = UserFacade.getUserFacade(EMF_Creator.createEntityManagerFactory());

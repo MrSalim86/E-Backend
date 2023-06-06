@@ -3,6 +3,7 @@ package utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -94,5 +95,4 @@ public class EMF_Creator {
         }
         return pomProperties.getProperty("db.name");
     }
-
 }
