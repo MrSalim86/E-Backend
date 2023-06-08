@@ -29,17 +29,19 @@ public class Populator {
     }
 
     public static void main(String[] args) {
-        Trip trip = new Trip("London", "22-12-2020", 22, "big appel", "kbh", "22", new Guide("hans", "mail", 1986, "linkind", "1234"));
-        Trip trip2 = new Trip("London", "22-12-2020", 22, "big appel", "kbh", "22", new Guide("kim", "mail", 1988, "linkind", "1234"));
+        //Trip trip = new Trip("London", "22-12-2020", 22, "big appel", "kbh", "22", new Guide("hans", "mail", 1986, "linkind", "1234"));
+        //Trip trip2 = new Trip("London", "22-12-2020", 22, "big appel", "kbh", "22", new Guide("kim", "mail", 1988, "linkind", "1234"));
 
-        TripFacade tf = TripFacade.getTripFacade(EMF_Creator.createEntityManagerFactory());
+        //TripFacade tf = TripFacade.getTripFacade(EMF_Creator.createEntityManagerFactory());
+        Guide guide = new Guide("hans", "mail", 1986, "linkind", "1234");
+        Guide guide2 = new Guide("kim", "mail", 1988, "linkind", "1234");
+
+        GuideFacade gf = GuideFacade.getGuideFacade(EMF_Creator.createEntityManagerFactory());
 
 
         /*User user = new User("GoMo", "Go1234");
         UserFacade uf = UserFacade.getUserFacade(EMF_Creator.createEntityManagerFactory());
         uf.createUser(user);*/
-
-
 
 
     }

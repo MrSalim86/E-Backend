@@ -56,9 +56,10 @@ public class GuideFacade {
 
     }
 
-    public void createGuide(Guide guide) {
+    public void createGuide(GuideDTO guideDTO) {
         EntityManager em = emf.createEntityManager();
         try {
+            Guide guide = new Guide(guideDTO.getName(), guideDTO.getGender(), guideDTO.getBirth_year(), guideDTO.getProfile(), guideDTO.getImage_url());
             em.getTransaction().begin();
             em.persist(guide);
             em.getTransaction().commit();
@@ -66,5 +67,7 @@ public class GuideFacade {
             em.close();
         }
     }
+
+    // Trip trip = new Trip(tripDTO.getName(), tripDTO.getDate(), tripDTO.getTime(), tripDTO.getLocation(), tripDTO.getDuration(), tripDTO.getPacking_list());
 
 }
