@@ -13,24 +13,29 @@ public class TripDTO {
     private String location;
     private String duration;
     private String packing_list;
+    private int guide_id;
 
 
     public TripDTO() {
     }
 
-    public TripDTO(String name, String date, Integer time, String location, String duration, String packing_list) {
+    public TripDTO(String name, String date, Integer time, String location, String duration, String packing_list, int guide_id) {
         this.name = name;
         this.date = date;
         this.time = time;
         this.location = location;
         this.duration = duration;
         this.packing_list = packing_list;
+        this.guide_id = guide_id;
     }
 
     public TripDTO(List<Trip> trips) {
     }
 
 
+    public int getGuide_id() {
+        return guide_id;
+    }
     public String getName() {
         return name;
     }

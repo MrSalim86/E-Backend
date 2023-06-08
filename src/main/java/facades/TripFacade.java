@@ -62,7 +62,7 @@ public class TripFacade {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Trip trip = new Trip(tripDTO.getName(), tripDTO.getDate(), tripDTO.getTime(), tripDTO.getLocation(), tripDTO.getDuration(), tripDTO.getPacking_list());
+            Trip trip = new Trip(tripDTO.getName(), tripDTO.getDate(), tripDTO.getTime(), tripDTO.getLocation(), tripDTO.getDuration(), tripDTO.getPacking_list(), tripDTO.getGuide_id());
             em.persist(trip);
             em.getTransaction().commit();
         } finally {

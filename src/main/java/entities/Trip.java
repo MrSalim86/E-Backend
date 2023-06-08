@@ -42,7 +42,7 @@ public class Trip {
         this.guide = guide;
     }
 
-    public Trip(String name, String date, Integer time, String location, String duration, String packing_list) {
+    public Trip(String name, String date, Integer time, String location, String duration, String packing_list, int guide_id) {
     }
 
 
