@@ -5,7 +5,7 @@ POST http://localhost:8080/E_Backend/api/login
 Content-Type: application/json
 
 {
-  "username": "admin",
+  "username": "mo",
   "password": "test123"
 }
 ###
@@ -19,6 +19,13 @@ GET http://localhost:8080/E_Backend/api/guide/all
 GET http://localhost:8080/E_Backend/api/info/all
 
 ###
-GET http://localhost:8080/E_Backend/api/guide/all
+POST http://localhost:8080/E_Backend/api/trip/assignUserToTrip
+Content-Type: application/json
+
+
+{
+    "id": 1,
+  "userName": "mo"
+}
 
 

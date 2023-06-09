@@ -2,11 +2,11 @@ package dtos;
 
 import entities.Trip;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TripDTO {
 
+    private Trip id;
     private String name;
     private String date;
     private Integer time;
@@ -31,7 +31,6 @@ public class TripDTO {
 
     public TripDTO(List<Trip> trips) {
     }
-
 
     public int getGuide_id() {
         return guide_id;
@@ -82,6 +81,10 @@ public class TripDTO {
 
     public void setPacking_list(String packing_list) {
         this.packing_list = packing_list;
+    }
+
+    public Trip getId() {
+        return id;
     }
 
     @Override

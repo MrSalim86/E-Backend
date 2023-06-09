@@ -3,12 +3,11 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.TripDTO;
-import entities.Trip;
+import dtos.UserDTO;
 import facades.TripFacade;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.List;
@@ -37,6 +36,16 @@ public class TripResource {
 
     }
 
-
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("assignUserToTrip")
+    public String assignUserToTrip(TripDTO tripDTO, UserDTO userDTO) {
+        // assignUserToTrip() should return a valid TripDTO
+        // Assuming the request body is a valid AssignTripRequest
+        TripDTO trip = FACADE.assignUserToTrip(tripDTO, userDTO);
+        return GSON.toJson(trip);
+    }
 
 }
+

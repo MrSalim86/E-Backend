@@ -1,6 +1,7 @@
 package facades;
 
 import dtos.TripDTO;
+import dtos.UserDTO;
 import entities.Guide;
 import entities.Trip;
 import entities.User;
@@ -83,19 +84,6 @@ public class TripFacade {
 
     }
 
-    public void chooseTrip(Trip trip, User user) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            em.getTransaction().begin();
-            Trip tripEntity = em.find(Trip.class, trip.getId());
-            tripEntity.setUsers(user);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-
-    }
-
 
     public void deleteTrip(Trip trip) {
         EntityManager em = emf.createEntityManager();
@@ -106,6 +94,53 @@ public class TripFacade {
         } finally {
             em.close();
         }
+    }
+
+    // assigen user to trip
+    public TripDTO assignUserToTrip(TripDTO tripDTO, UserDTO userDTO) {
+        if (tripDTO == null || userDTO == null) {
+            throw new IllegalArgumentException("TripDTO and UserDTO cannot be null");
+        }
+
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+
+            // Ensure tripDTO and userDTO contain ids
+            if (tripDTO.getId() != null && userDTO.getUserName() != null) {
+                // Find Trip and User entities
+                Trip trip = em.find(Trip.class, tripDTO.getId());
+                User user = em.find(User.class, userDTO.getUserName());
+
+                // Check if entities were found
+                if (trip == null || user == null) {
+                    em.getTransaction().rollback();
+                    throw new IllegalStateException("Trip or User not found");
+                }
+
+                // Update relationship
+                trip.setUsers(user);
+                em.merge(trip);
+
+                em.getTransaction().commit();
+
+                // Convert the updated Trip entity to TripDTO and return
+                return assignUserToTrip(); // assuming you have this method
+            } else {
+                em.getTransaction().rollback();
+                throw new IllegalArgumentException("TripDTO and UserDTO must have ids");
+            }
+        } catch (Exception e) {
+            // Rollback in case of an exception
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
+    private TripDTO assignUserToTrip() {
+        return null;
     }
 
 }
