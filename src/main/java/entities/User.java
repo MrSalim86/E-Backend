@@ -52,17 +52,17 @@ public class User implements Serializable {
 
 
 
-  public User(String userName, String userPass, List<Role> roleList, List<Trip> trips, String address, String phone, String email, Integer birth_year, String gender) {
+  public User(String userName, String userPass, String address, String phone, String email, Integer birth_year, String gender) {
     this.userName = userName;
     this.userPass = userPass;
-    this.roleList = roleList;
-    this.trips = trips;
     this.address = address;
     this.phone = phone;
     this.email = email;
     this.birth_year = birth_year;
     this.gender = gender;
   }
+
+
 
   public String getGender() {
     return gender;

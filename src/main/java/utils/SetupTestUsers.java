@@ -31,11 +31,11 @@ public class SetupTestUsers {
     User user = new User("user", "test123");
     User admin = new User("admin", "test123");
     User both = new User("user_admin", "test123");
-    User mo = new User("mo", "test123");
-    Guide guide = new Guide("hans", "male", 1986, "linkind", "https://unsplash.com/photos/9aZAZF4SoiA");
+    User user1 = new User("mo", "test123", "low-way", "+918976543", "Mo@gmail.com", 1986, "male");
+    Guide guide1 = new Guide("hans", "male", 1986, "linkind", "https://unsplash.com/photos/9aZAZF4SoiA");
     Guide guide2 = new Guide("kim", "male", 1988, "linkind", "https://unsplash.com/photos/dV5Yz97d_6Q");
     Guide guide3 = new Guide("lone", "female", 2008, "facebook", "https://unsplash.com/photos/f2Em6TIQObc");
-    Trip trip = new Trip("London", "22-12-2020", 22, "big appel", "aarhus", "22", guide);
+    Trip trip = new Trip("London", "22-12-2020", 22, "big appel", "aarhus", "22", guide1);
     Trip trip2 = new Trip("Dubai", "22-12-2022", 15, "skydive", "kbh", "sun class", guide2);
     Trip trip3 = new Trip("Bali", "22-12-2024", 11, "sol", "london", "suncream", guide3);
 
@@ -45,7 +45,7 @@ public class SetupTestUsers {
     em.getTransaction().begin();
     Role userRole = new Role("user");
     Role adminRole = new Role("admin");
-    mo.addRole(userRole);
+    user1.addRole(userRole);
     user.addRole(userRole);
     admin.addRole(adminRole);
     both.addRole(userRole);
@@ -53,7 +53,7 @@ public class SetupTestUsers {
     em.persist(userRole);
     em.persist(adminRole);
     em.persist(user);
-    em.persist(mo);
+    em.persist(user1);
     em.persist(admin);
     em.persist(both);
     em.getTransaction().commit();
@@ -62,13 +62,14 @@ public class SetupTestUsers {
     System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
     System.out.println("Created TEST Users");
     em.getTransaction().begin();
-    em.persist(guide);
+    em.persist(guide1);
     em.persist(guide2);
     em.persist(guide3);
     em.persist(trip);
     em.persist(trip2);
     em.persist(trip3);
     em.getTransaction().commit();
+
     System.out.println("Created TEST Guides");
    
   }

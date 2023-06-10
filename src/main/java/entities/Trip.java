@@ -29,7 +29,7 @@ public class Trip {
     private String packingList;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "guide_id")
+    @JoinColumn(name = "guide_id",nullable = false)
     private Guide guide;
 
     public Trip(String name, String date, Integer time, String location, String duration, String packingList, Guide guide) {
